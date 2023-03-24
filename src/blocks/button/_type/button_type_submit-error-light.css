@@ -1,0 +1,9 @@
+.button_type_submit-error-light {
+  opacity: 0.2;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  background: none;
+  cursor: default;
+  margin-top: 188px;
+}

@@ -1,9 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "../Header";
 import Form from "../Form";
-function Login() {
-  const navigate = useNavigate();
+
+function Login(props) {
 
   function handleSubmitLogin(evt) {
     evt.preventDefault();
@@ -11,8 +10,7 @@ function Login() {
   }
   return (
     <>
-      <Header to="sing-in" text="Регистрация" />
-      <button onClick={() => navigate(-1)}>back</button>
+      <Header to="sign-up" text="Регистрация" loggedIn={props.loggedIn}/>
       <div className="page__conteiner">
         <Form
           title="Вход"

@@ -1,4 +1,4 @@
-.autorisation__text {
+.authorization__text {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 900;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 530px) {
-  .autorisation__text {
+  .authorization__text {
     font-size: 20px;
     line-height: 24px;
   }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from '../images/logo.svg';
 
 function Header(props) {
+  const headerLinkClassName = (`header__link ${props.loggedIn ? 'header__link_type_login' : 'header__link_type_logout'}`);
     return(
       <header className="header page__conteiner">
         <img
@@ -12,7 +13,7 @@ function Header(props) {
         />
         <div className="header__container">
           <p className="header__email">{props.email}</p>
-          <Link to={`/ ${props.to}`} className="header__link">{props.text}</Link>
+          <Link to={`/${props.to}`} className={headerLinkClassName} >{props.text}</Link>
         </div>
       </header>
     )

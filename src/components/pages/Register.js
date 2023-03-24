@@ -1,18 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "../Header";
 import Form from "../Form";
 import InfoTooltip from "../InfoTooltip";
-import autorisationTrue from "../../images/autorisation_true.svg";
-import autorisationFalse from "../../images/autorisation_false.svg";
+import useValidation from "../../hooks/useValidation";
+import authorizationTrue from "../../images/authorization_true.svg";
+import authorizationFalse from "../../images/authorization_false.svg";
 
-function Register() {
-  const navigate = useNavigate();
+function Register(props) {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-  const [autorisation, setAutorisation] = React.useState(false);
   const isOpen = isPopupOpen;
-  const textAutorisationTrue = "Вы успешно зарегистрировались!";
-  const textAutorisationFalse = "Что-то пошло не так! Попробуйте ещё раз.";
+  const { values, onChange, resetValidation, isFormValid } = useValidation();
+React.useEffect(() => {
+  resetValidation({ email: "", password: "" });
+}, []);
+  const textauthorizationTrue = "Вы успешно зарегистрировались!";
+  const textauthorizationFalse = "Что-то пошло не так! Попробуйте ещё раз.";
   function closePopup() {
     setIsPopupOpen(false);
   }
@@ -23,14 +25,13 @@ function Register() {
   }
   return (
     <>
-      <Header to="sing-up" text="Войти" />
-      <button onClick={() => navigate(-1)}>back</button>
+      <Header to="sign-in" text="Войти" loggedIn={props.loggedIn}/>
       <div className="page__conteiner">
         <Form
           title="Регистрация"
           onSubmit={handleSubmitRegister}
           labelSubmit="Зарегистрироваться"
-          isFormValid={true}
+          isFormValid={isFormValid}
           theme="light"
           children={
             <>
@@ -39,6 +40,8 @@ function Register() {
                   className="form__input form__input_theme-light"
                   type="email"
                   name="email"
+                  value={values.email || ''}
+                  onChange={onChange}
                   placeholder="Email"
                   minLength="2"
                   maxLength="30"
@@ -51,6 +54,8 @@ function Register() {
                   className="form__input form__input_theme-light"
                   type="password"
                   name="password"
+                  value={values.password || ''}
+                  onChange={onChange}
                   placeholder="Пароль"
                   minLength="2"
                   maxLength="30"
@@ -67,14 +72,14 @@ function Register() {
         isOpen={isOpen}
         onClose={closePopup}
         children={
-          <div className="autorisation">
+          <div className="authorization">
             <img 
-              className="autorisation__image" 
-              src={(autorisation ? autorisationTrue : autorisationFalse)} 
+              className="authorization__image" 
+              src={(props.loggedIn ? authorizationTrue : authorizationFalse)} 
               alt="Image"
             />
-            <p className="autorisation__text">
-              {autorisation ? textAutorisationTrue : textAutorisationFalse}
+            <p className="authorization__text">
+              {props.loggedIn ? textauthorizationTrue : textauthorizationFalse}
             </p>
           </div>
         }

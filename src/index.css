@@ -6,6 +6,8 @@
 @import url(./blocks/header/__container/header__container.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__link/header__link.css);
+@import url(./blocks/header/__link/_type/header__link_type_login.css);
+@import url(./blocks/header/__link/_type/header__link_type_logout.css);
 @import url(./blocks/header/__email/header__email.css);
 @import url(./blocks/content/content.css);
 @import url(./blocks/popup/popup.css);
@@ -51,7 +53,8 @@
 @import url(./blocks/button/_type/button_type_edit.css);
 @import url(./blocks/button/_type/button_type_like.css);
 @import url(./blocks/button/_type/button_type_submit.css);
-@import url(./blocks/button/_type/button_type_submit-error.css);
+@import url(./blocks/button/_type/button_type_submit-error-light.css);
+@import url(./blocks/button/_type/button_type_submit-error-dark.css);
 @import url(./blocks/button/_type/button_type_submit-dark.css);
 @import url(./blocks/button/_type/button_type_submit-light.css);
 @import url(./blocks/button/_active/button_active.css);
@@ -59,6 +62,6 @@
 @import url(./blocks/loader/loader__overlay/_active/loader__overlay_active.css);
 @import url(./blocks/loader/loader.css);
 
-@import url(./blocks/autorisation/autorisation.css);
-@import url(./blocks/autorisation/__text/autorisation__text.css);
-@import url(./blocks/autorisation/__image/autorisation__image.css);
+@import url(./blocks/authorization/authorization.css);
+@import url(./blocks/authorization/__image/authorization__image.css);
+@import url(./blocks/authorization/__text/authorization__text.css);
