@@ -4,15 +4,20 @@ import UserPageWithCards from "./pages/UserPageWithCard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import { register, login, checkToken } from "../utils/auth";
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(true);//false
-  function onSubmitRegister() {
-
+  // const navigate = React.useNavigate();
+  
+  function onSubmitRegister(values) {
+    register(values);
+    //navigate to='/cards'
   }
 
-  function onSubmitLogin() {
-
+  function onSubmitLogin(values) {
+    login(values)    
+    .then(res=> {checkToken(res.token)});
   }
 
   return (

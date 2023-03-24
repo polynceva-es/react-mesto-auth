@@ -1,12 +1,17 @@
 import React from "react";
 import Header from "../Header";
 import Form from "../Form";
+import useValidation from "../../hooks/useValidation";
+import { checkToken } from "../../utils/auth";
 
 function Login(props) {
-
+  const { values, onChange, resetValidation, isFormValid } = useValidation();
+React.useEffect(() => {
+  resetValidation({ email: "", password: "" });
+}, []);
   function handleSubmitLogin(evt) {
     evt.preventDefault();
-    console.log("Submit login");
+    props.onSubmitLogin(values)
   }
   return (
     <>
@@ -16,7 +21,7 @@ function Login(props) {
           title="Вход"
           onSubmit={handleSubmitLogin}
           labelSubmit="Войти"
-          isFormValid={true}
+          isFormValid={isFormValid}
           theme="light"
           children={
             <>
@@ -25,6 +30,8 @@ function Login(props) {
                   className="form__input form__input_theme-light"
                   type="email"
                   name="email"
+                  onChange={onChange}
+                  value={values.email || ''}
                   placeholder="Email"
                   minLength="2"
                   maxLength="30"
@@ -37,6 +44,8 @@ function Login(props) {
                   className="form__input form__input_theme-light"
                   type="password"
                   name="password"
+                  onChange={onChange}
+                  value={values.password || ''}
                   placeholder="Пароль"
                   minLength="2"
                   maxLength="30"

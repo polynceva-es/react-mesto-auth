@@ -23,7 +23,10 @@ React.useEffect(() => {
   function handleSubmitRegister(evt) {
     evt.preventDefault();
     console.log("Submit Register");
-    //props.onSubmitRegister();
+    // register(values).then((res)=>
+    //   {if(res.status !== 400) {setLoggedIn(true); setIsPopupOpen(true)}}
+    //   );
+    props.onSubmitRegister(values);
     //if server OK => setIsPopupOpen(true);
   }
   return (
