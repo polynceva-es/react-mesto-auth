@@ -121,7 +121,7 @@ function UserPageWithCards () {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Header 
-      to=""
+      to="sign-in"
       text="Выйти"
       email="email_email@google.com"
       />

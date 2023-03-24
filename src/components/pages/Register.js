@@ -5,6 +5,7 @@ import InfoTooltip from "../InfoTooltip";
 import useValidation from "../../hooks/useValidation";
 import authorizationTrue from "../../images/authorization_true.svg";
 import authorizationFalse from "../../images/authorization_false.svg";
+import { Link } from "react-router-dom";
 
 function Register(props) {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
@@ -22,6 +23,8 @@ React.useEffect(() => {
   function handleSubmitRegister(evt) {
     evt.preventDefault();
     console.log("Submit Register");
+    //props.onSubmitRegister();
+    //if server OK => setIsPopupOpen(true);
   }
   return (
     <>
@@ -66,7 +69,7 @@ React.useEffect(() => {
             </>
           }
         />
-        <p className="form__caption">Уже зарегистрированы? Войти</p> //Сделать ссылку на Войти
+        <Link to="/sign-in" className="form__caption">Уже зарегистрированы? Войти</Link>
       </div>
       <InfoTooltip
         isOpen={isOpen}

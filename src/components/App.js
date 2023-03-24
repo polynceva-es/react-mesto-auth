@@ -6,7 +6,14 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(true);//false
+  function onSubmitRegister() {
+
+  }
+
+  function onSubmitLogin() {
+
+  }
 
   return (
    <>
@@ -21,8 +28,8 @@ function App() {
           element={UserPageWithCards}
         />}
       />
-      <Route path="/sign-up" element={<Register loggedIn={loggedIn}/>}/>
-      <Route path="/sign-in" element={<Login loggedIn={loggedIn}/>}/>
+      <Route path="/sign-up" element={<Register loggedIn={loggedIn} onSubmitRegister={onSubmitRegister}/>}/>
+      <Route path="/sign-in" element={<Login loggedIn={loggedIn} onSubmitLogin={onSubmitLogin}/>}/>
       
       <Route path="*" element={<div>404 Page Not found</div>}/>
     </Routes>
