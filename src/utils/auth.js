@@ -14,7 +14,6 @@ export function register(values) {
     body: JSON.stringify({password: values.password, email: values.email})
   })
   .then(res=> getResponseData(res))
-  .then(res=> console.log(res))
 }
 
 export function login(values) {
@@ -24,10 +23,7 @@ export function login(values) {
     body: JSON.stringify({password: values.password, email: values.email})
   })
   .then(res=> getResponseData(res))
-  .then(res=> {
-    console.log(res);
-    return res;
-  })
+  .then(res=> {return res;})
 }
 
 export function checkToken(jwt) {
@@ -36,5 +32,4 @@ export function checkToken(jwt) {
     headers: {...HEADERS, 'Authorization': `Bearer ${jwt}`}
   })
   .then(res=> getResponseData(res))
-  .then(res=> console.log(res))
 }

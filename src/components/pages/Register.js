@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; 
 import Header from "../Header";
 import Form from "../Form";
 import InfoTooltip from "../InfoTooltip";
@@ -11,23 +12,20 @@ function Register(props) {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const isOpen = isPopupOpen;
   const { values, onChange, resetValidation, isFormValid } = useValidation();
+  const navigate = useNavigate();
 React.useEffect(() => {
   resetValidation({ email: "", password: "" });
 }, []);
   const textauthorizationTrue = "Вы успешно зарегистрировались!";
   const textauthorizationFalse = "Что-то пошло не так! Попробуйте ещё раз.";
   function closePopup() {
+    if(props.regedIn) {navigate ('/sign-in', {replace: true})};
     setIsPopupOpen(false);
   }
 
   function handleSubmitRegister(evt) {
     evt.preventDefault();
-    console.log("Submit Register");
-    // register(values).then((res)=>
-    //   {if(res.status !== 400) {setLoggedIn(true); setIsPopupOpen(true)}}
-    //   );
-    props.onSubmitRegister(values);
-    //if server OK => setIsPopupOpen(true);
+    props.onSubmitRegister(values, setIsPopupOpen);
   }
   return (
     <>
@@ -81,11 +79,11 @@ React.useEffect(() => {
           <div className="authorization">
             <img 
               className="authorization__image" 
-              src={(props.loggedIn ? authorizationTrue : authorizationFalse)} 
+              src={(props.regedIn ? authorizationTrue : authorizationFalse)} 
               alt="Image"
             />
             <p className="authorization__text">
-              {props.loggedIn ? textauthorizationTrue : textauthorizationFalse}
+              {props.regedIn ? textauthorizationTrue : textauthorizationFalse}
             </p>
           </div>
         }
