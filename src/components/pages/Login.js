@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../Header";
 import Form from "../Form";
 import useValidation from "../../hooks/useValidation";
-import { checkToken } from "../../utils/auth";
 
 function Login(props) {
   const { values, onChange, resetValidation, isFormValid } = useValidation();
+
 React.useEffect(() => {
   resetValidation({ email: "", password: "" });
 }, []);

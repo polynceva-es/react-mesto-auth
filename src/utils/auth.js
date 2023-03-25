@@ -23,7 +23,7 @@ export function login(values) {
     body: JSON.stringify({password: values.password, email: values.email})
   })
   .then(res=> getResponseData(res))
-  .then(res=> {return res;})
+  .then(res=> {localStorage.setItem('token', res.token)})
 }
 
 export function checkToken(jwt) {

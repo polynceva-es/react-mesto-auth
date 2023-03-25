@@ -12,7 +12,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Loader from "../Loader";
 
 
-function UserPageWithCards () {
+function UserPageWithCards (props) {
     const [currentUser, setCurrentUser] = React.useState({});
     const [cards, setCards] = React.useState([]);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -123,7 +123,8 @@ function UserPageWithCards () {
       <Header 
       to="sign-in"
       text="Выйти"
-      email="email_email@google.com"
+      email={props.userEmail}
+      onClick={props.onClick}
       />
       <Main
         cards = {cards}

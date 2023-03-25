@@ -13,7 +13,7 @@ function Header(props) {
         />
         <div className="header__container">
           <p className="header__email">{props.email}</p>
-          <Link to={`/${props.to}`} className={headerLinkClassName} >{props.text}</Link>
+          <Link to={`/${props.to}`} onClick={props.onClick} className={headerLinkClassName} >{props.text}</Link>
         </div>
       </header>
     )
