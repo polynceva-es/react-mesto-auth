@@ -1,21 +1,23 @@
 import React from "react";
 import Header from "../Header";
 import Form from "../Form";
+import InfoTooltip from "../InfoTooltip";
 import useValidation from "../../hooks/useValidation";
+import logInFalse from "../../images/authorization_false.svg";
 
 function Login(props) {
   const { values, onChange, resetValidation, isFormValid } = useValidation();
-
-React.useEffect(() => {
-  resetValidation({ email: "", password: "" });
-}, []);
+  const textLogInFalse = "Что-то пошло не так! Попробуйте ещё раз.";
+  React.useEffect(() => {
+    resetValidation({ email: "", password: "" });
+  }, []);
   function handleSubmitLogin(evt) {
     evt.preventDefault();
-    props.onSubmitLogin(values)
+    props.onSubmitLogin(values);
   }
   return (
     <>
-      <Header to="sign-up" text="Регистрация" loggedIn={props.loggedIn}/>
+      <Header to="sign-up" text="Регистрация" loggedIn={props.loggedIn} />
       <div className="page__conteiner">
         <Form
           title="Вход"
@@ -31,7 +33,7 @@ React.useEffect(() => {
                   type="email"
                   name="email"
                   onChange={onChange}
-                  value={values.email || ''}
+                  value={values.email || ""}
                   placeholder="Email"
                   minLength="2"
                   maxLength="30"
@@ -45,7 +47,7 @@ React.useEffect(() => {
                   type="password"
                   name="password"
                   onChange={onChange}
-                  value={values.password || ''}
+                  value={values.password || ""}
                   placeholder="Пароль"
                   minLength="2"
                   maxLength="30"
@@ -57,6 +59,25 @@ React.useEffect(() => {
           }
         />
       </div>
+      <InfoTooltip
+        isOpen={props.isOpen}
+        onClose={props.onClose}
+        handleCloseClickOverlay={props.handleCloseClickOverlay}
+        children={
+          <div className="authorization">
+            <img
+              className="authorization__image"
+              src={logInFalse}
+              alt="Image"
+            />
+            <p className="authorization__text">
+              {textLogInFalse}
+              <br />
+              {props.onError}
+            </p>
+          </div>
+        }
+      />
     </>
   );
 }

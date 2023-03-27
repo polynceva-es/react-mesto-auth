@@ -9,8 +9,6 @@ import authorizationFalse from "../../images/authorization_false.svg";
 import { Link } from "react-router-dom";
 
 function Register(props) {
-  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-  const isOpen = isPopupOpen;
   const { values, onChange, resetValidation, isFormValid } = useValidation();
   const navigate = useNavigate();
 React.useEffect(() => {
@@ -20,12 +18,12 @@ React.useEffect(() => {
   const textauthorizationFalse = "Что-то пошло не так! Попробуйте ещё раз.";
   function closePopup() {
     if(props.regedIn) {navigate ('/sign-in', {replace: true})};
-    setIsPopupOpen(false);
+    props.onClose();
   }
 
   function handleSubmitRegister(evt) {
     evt.preventDefault();
-    props.onSubmitRegister(values, setIsPopupOpen);
+    props.onSubmitRegister(values);
   }
   return (
     <>
@@ -73,8 +71,9 @@ React.useEffect(() => {
         <Link to="/sign-in" className="form__caption">Уже зарегистрированы? Войти</Link>
       </div>
       <InfoTooltip
-        isOpen={isOpen}
+        isOpen={props.isOpen}
         onClose={closePopup}
+        handleCloseClickOverlay={props.handleCloseClickOverlay}
         children={
           <div className="authorization">
             <img 
@@ -84,6 +83,7 @@ React.useEffect(() => {
             />
             <p className="authorization__text">
               {props.regedIn ? textauthorizationTrue : textauthorizationFalse}
+              <br/>{props.onError}
             </p>
           </div>
         }

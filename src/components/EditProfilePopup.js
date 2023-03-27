@@ -18,34 +18,6 @@ function EditProfilePopup(props) {
     );
   }, [currentUser, props.isOpen]);
 
-  // Первый вариант
-  // const [name, setName] = React.useState('');
-  // const [description, setDescription] = React.useState('');
-  // function handleChangeName(evt) {
-  //   setName(evt.target.value);
-  // }
-  // function handleChangeDescription(evt) {
-  //   setDescription(evt.target.value);
-  // }
-  // React.useEffect(()=> {
-  //   if(currentUser.name) {
-  //     // setName(currentUser.name);
-  //   }
-  //   if(currentUser.about) {
-  //     // setDescription(currentUser.about);
-  //   }
-  // }, [currentUser, props.isOpen])
-
-  //Второй вариант
-  // const[values, setValues] = React.useState({name: '', about: ''});
-  // const[error, setError] = React.useState({name: '', about: ''});
-  // function onChange(evt) {
-  //   const error = evt.target.validationMessage;
-  //   const {name, value} = evt.target;
-  //   setValues((values) => ({...values, [name]: value}))
-  //   setError((errors) => ({...errors, [name]: error}))
-  // }
-
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onUpdateUser({ name: values.name, about: values.about });

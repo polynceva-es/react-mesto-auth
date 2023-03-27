@@ -13,32 +13,6 @@ function AddPlacePopup(props) {
     resetValidation({ title: "", url: "" });
   }, [props.isOpen]);
 
-  // Первый вариант
-  // const [title, setTitle] = React.useState('');
-  // const [url, setUrl] = React.useState('');
-  // function handleChangeTitle(evt) {
-  //   setTitle(evt.target.value);
-  // }
-  // function handleChangeUrl(evt) {
-  //   setUrl(evt.target.value);
-  // }
-  // React.useEffect(() => {
-  //   if(!props.isOpen) {
-  //     // setTitle('');
-  //     // setUrl('');
-  //   }
-  // }, [props.isOpen])
-
-  //Второй вариант
-  // const[values, setValues] = React.useState({title: '', url: ''});
-  // const[error, setError] = React.useState({title: '', url: ''});
-  // function onChange(evt) {
-  //   const error = evt.target.validationMessage;
-  //   const {name, value} = evt.target;
-  //   setValues((values) => ({...values, [name]: value}))
-  //   setError((errors) => ({...errors, [name]: error}))
-  // }
-
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onAddPlace({ title: values.title, url: values.url });
