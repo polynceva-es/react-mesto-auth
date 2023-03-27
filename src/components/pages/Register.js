@@ -83,7 +83,6 @@ React.useEffect(() => {
             />
             <p className="authorization__text">
               {props.regedIn ? textauthorizationTrue : textauthorizationFalse}
-              <br/>{props.onError}
             </p>
           </div>
         }

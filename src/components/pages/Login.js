@@ -72,8 +72,6 @@ function Login(props) {
             />
             <p className="authorization__text">
               {textLogInFalse}
-              <br />
-              {props.onError}
             </p>
           </div>
         }

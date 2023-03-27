@@ -11,7 +11,6 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [regedIn, setRegedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState('');
-  const[errorMessage, setErrorMessage] = React.useState('');
 
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
@@ -190,9 +189,8 @@ function App() {
       .then(() => {
         setRegedIn(true);
       })
-      .catch((err) => {
+      .catch(() => {
         setRegedIn(false); 
-        setErrorMessage(err);
       })
       .finally(() => {
         setIsLoader(false); 
@@ -207,9 +205,8 @@ function App() {
         setUserEmail(values.email);
         navigate("/", { replace: true })
       })
-      .catch((err) =>{
-        setLoggedIn(false)
-        setErrorMessage(err)})
+      .catch(() =>{
+        setLoggedIn(false)})
       .finally(() => {
         setIsLoader(false);
         setIsInfoTooltipOpen(true)})
@@ -265,8 +262,7 @@ function App() {
               isOpen={isInfoTooltipOpen}
               onClose={closeAllPopups}
               handleCloseClickOverlay={handleCloseClickOverlay}
-              onError={errorMessage}
-            />
+              />
           }
         />
         <Route
@@ -278,8 +274,7 @@ function App() {
               isOpen={isInfoTooltipOpen}
               onClose={closeAllPopups}
               handleCloseClickOverlay={handleCloseClickOverlay}
-              onError={errorMessage} 
-            />}
+              />}
         />
         <Route path="*" element={<div>404 Page Not found</div>} />
       </Routes>
