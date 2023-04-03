@@ -1,0 +1,8 @@
+.header__nav-button {
+    cursor: pointer;
+    border-style: none;
+    padding: 0;
+    width: 24px;
+    height: 27px;
+    background: none;
+}

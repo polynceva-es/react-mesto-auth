@@ -9,6 +9,8 @@
 @import url(./blocks/header/__link/_type/header__link_type_login.css);
 @import url(./blocks/header/__link/_type/header__link_type_logout.css);
 @import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__nav-button/header__nav-button.css);
+@import url(./blocks/header/__nav-icon/header__nav-icon.css);
 @import url(./blocks/content/content.css);
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/_type/popup_type_form.css);

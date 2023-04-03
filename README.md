@@ -3,4 +3,4 @@
 Приложение с авторизацией и регистрацией пользователя. 
 Оно взаимодействует сразу с двумя API: авторизации и API редактирования пользователя и получения карточек. 
 
-Макет проекта доступен по [ссылке](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/Sprint-14-RU?node-id=0%3A1.)
+Макет проекта доступен по [ссылке](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=0-1&t=XWy8HYPDm620NT3D-0)

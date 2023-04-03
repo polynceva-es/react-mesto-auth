@@ -18,6 +18,7 @@ function UserPageWithCards (props) {
       text="Выйти"
       email={props.userEmail}
       onClick={props.onClick}
+      loggedIn={props.loggedIn}
       />
       <Main
         cards = {props.cards}

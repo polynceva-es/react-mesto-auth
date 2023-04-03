@@ -1,20 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logo from '../images/logo.svg';
+import HeaderNav from "./HeaderNav";
 
 function Header(props) {
-  const headerLinkClassName = (`header__link ${props.loggedIn ? 'header__link_type_login' : 'header__link_type_logout'}`);
-    return(
+      return(
       <header className="header page__conteiner">
         <img
           className="header__logo"
           src={logo}
           alt="Логотип Место"
         />
-        <div className="header__container">
-          <p className="header__email">{props.email}</p>
-          <Link to={`/${props.to}`} onClick={props.onClick} className={headerLinkClassName} >{props.text}</Link>
-        </div>
+        <HeaderNav  
+          email={props.email}
+          onClick={props.onClick}
+          text={props.text}
+          to={props.to}
+          loggedIn={props.loggedIn}/>
       </header>
     )
 }

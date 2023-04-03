@@ -205,8 +205,10 @@ function App() {
         setUserEmail(values.email);
         navigate("/", { replace: true })
       })
-      .catch(() =>{
-        setLoggedIn(false)})
+      .catch((err) => {
+        err.then((e) => console.log(e.message));
+        setLoggedIn(false)
+      })
       .finally(() => {
         setIsLoader(false);
         setIsInfoTooltipOpen(true)})
