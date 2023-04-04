@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../Header";
-import MobileMenu from "../MobileMenu";
 import Main from "../Main";
 import Footer from "../Footer";
 import EditProfilePopup from "../EditProfilePopup";
@@ -14,17 +13,6 @@ import Loader from "../Loader";
 function UserPageWithCards (props) {
   return (
     <CurrentUserContext.Provider value={props.currentUser}>
-      {props.isMenuOpen ? 
-        <MobileMenu 
-          to="sign-in"
-          text="Выйти"
-          email={props.userEmail}
-          onClick={props.onClick}
-          loggedIn={props.loggedIn}
-          isMenuOpen={props.isMenuOpen}
-          handleMenuOpen={props.handleMenuOpen}
-        />
-      : 
         <Header 
           to="sign-in"
           text="Выйти"
@@ -34,7 +22,6 @@ function UserPageWithCards (props) {
           isMenuOpen={props.isMenuOpen}
           handleMenuOpen={props.handleMenuOpen}
         />
-      }
       <Main
         cards = {props.cards}
         onEditProfile={props.handleEditProfileClick}

@@ -3,6 +3,7 @@
 @import url(./blocks/page/page.css);
 @import url(./blocks/page/__conteiner/page__conteiner.css);
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/_hide/header_hide.css);
 @import url(./blocks/header/_type_mobile/header_type_mobile.css);
 @import url(./blocks/header/__container/header__container.css);
 @import url(./blocks/header/__container/_mobile/header__container_mobile_column.css);
