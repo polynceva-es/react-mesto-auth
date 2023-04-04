@@ -11,7 +11,6 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [regedIn, setRegedIn] = React.useState(false);
   const [userEmail, setUserEmail] = React.useState('');
-
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -21,7 +20,7 @@ function App() {
   const [cardToDelete, setCardToDelete] = React.useState(null);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [isLoader, setIsLoader] = React.useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const isOpen =
     isEditAvatarPopupOpen ||
     isEditProfilePopupOpen ||
@@ -29,7 +28,6 @@ function App() {
     isInfoTooltipOpen ||
     selectedCard ||
     cardToDelete;
-
   const navigate = useNavigate();
 
   function tokenCheck() {
@@ -50,7 +48,6 @@ function App() {
         .finally(() => setIsLoader(false));
     }
   }
-
   React.useEffect(() => {
     tokenCheck();
     if (loggedIn) {
@@ -67,7 +64,6 @@ function App() {
         .finally(() => setIsLoader(false));
     }
   }, [loggedIn]);
-
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
@@ -83,7 +79,6 @@ function App() {
   function handleDeletePopupOpen(card) {
     setCardToDelete(card);
   }
-
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -92,7 +87,6 @@ function App() {
     setSelectedCard(undefined);
     setCardToDelete(undefined);
   }
-
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     const promise = isLiked
@@ -108,7 +102,6 @@ function App() {
         console.log("Ошибка:" + err);
       });
   }
-
   function handleCardDelete(card) {
     setIsLoader(true);
     api
@@ -120,7 +113,6 @@ function App() {
       })
       .finally(() => setIsLoader(false));
   }
-
   React.useEffect(() => {
     function handleCloseEsc(evt) {
       if (evt.key === "Escape") {
@@ -134,13 +126,11 @@ function App() {
       };
     }
   }, [isOpen]);
-
   function handleCloseClickOverlay(evt) {
     if (evt.target === evt.currentTarget) {
       closeAllPopups();
     }
   }
-
   function handleUpdateUser(formValues) {
     setIsLoader(true);
     api
@@ -154,7 +144,6 @@ function App() {
       })
       .finally(() => setIsLoader(false));
   }
-
   function handleUpdateAvatar(formValue) {
     setIsLoader(true);
     api
@@ -168,7 +157,6 @@ function App() {
       })
       .finally(() => setIsLoader(false));
   }
-
   function handleAddPlaceSubmit(formValues) {
     setIsLoader(true);
     api
@@ -182,7 +170,6 @@ function App() {
       })
       .finally(() => setIsLoader(false));
   }
-
   function onSubmitRegister(values) {
     setIsLoader(true);
     register(values)
@@ -196,7 +183,6 @@ function App() {
         setIsLoader(false); 
         setIsInfoTooltipOpen(true)});
   }
-
   function onSubmitLogin(values) {
     setIsLoader(true);
     login(values)
@@ -213,12 +199,14 @@ function App() {
         setIsLoader(false);
         setIsInfoTooltipOpen(true)})
   }
-
   function signOut() {
     setLoggedIn(false);
     setIsInfoTooltipOpen(false);
     localStorage.removeItem("token");
     navigate("/sign-in", { replace: true });
+  }
+  function handleMenuOpen() {
+    setIsMenuOpen(!isMenuOpen);
   }
   return (
     <>
@@ -251,6 +239,8 @@ function App() {
               isEditProfilePopupOpen={isEditProfilePopupOpen}
               isEditAvatarPopupOpen={isEditAvatarPopupOpen}
               isAddPlacePopupOpen={isAddPlacePopupOpen}
+              isMenuOpen={isMenuOpen}
+              handleMenuOpen={handleMenuOpen}
             />
           }
         />
