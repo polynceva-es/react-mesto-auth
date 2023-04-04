@@ -6,10 +6,10 @@
     line-height: 22px;
     text-align: right;
     color: #FFFFFF;
-    margin: 0 24px 0 24px;
+    margin: 0 24px 0 0;
 }
-/*   
-@media screen and (max-width: 530px) {
+  
+/* @media screen and (max-width: 530px) {
     .header__email {
         margin: 40px 0 18px 0;
     }

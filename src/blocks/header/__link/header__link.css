@@ -8,11 +8,10 @@
     text-align: right;
 }
 
-@media screen and (max-width: 530px) {
+/* @media screen and (max-width: 530px) {
     .header__link {
       font-size: 14px;
       line-height: 17px;
       margin-right: 30px;
-      /* margin-bottom: 40px; */
     }
-}
+} */

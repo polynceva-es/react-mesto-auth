@@ -1,0 +1,9 @@
+.header__container_hiden {
+    display: block;
+}
+
+@media screen and (max-width: 530px) {
+    .header__container_hiden {
+        display: none;
+    }
+}
