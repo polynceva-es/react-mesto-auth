@@ -1,5 +1,6 @@
 {
   "name": "mesto-react-auth",
+  "homepage": "https://polynceva-es.github.io/react-mesto-auth/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
